@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+#define fast ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);srand(time(NULL));
+#define ll long long int
+#define ld long double
+#define vec vector<ll>
+#define pb push_back
+#define mp make_pair
+#define sz size()
+#define ff first
+#define ss second
+#define yes cout<<"YES"<<"\n"
+#define no cout<<"NO"<<"\n"
+#define all(x) x.begin(),x.end()
+#define inf LLONG_MAX
+#define f(i,a,b) for(i=a;i<b;i++)
+#define PI 3.141592653589793238
+const ll mod=1000000007;
+using namespace std;
+void solve()
+{
+  ll n,i,j,sum=0;
+  cin>>n;
+  vector<ll> v;
+  for(i=0;i<n;i++)
+  {
+    cin>>j;
+    sum+=j;
+    v.pb(j);
+  }
+  for(i=n;i>=1;i--)
+  {
+    if(sum%i==0)
+    {
+      ll chesum = sum/i;
+      ll cnt=0;
+      ll flag=1;
+      ll step=0;
+      for(j=0;j<n;j++)
+      {
+        cnt+=v[j];
+        if(cnt>chesum)
+        {
+          flag=0;
+          break;
+        }
+        else if(cnt==chesum)cnt=0;
+      }
+      if(flag==1)
+      {
+        cout<<n-i<<"\n";
+        break;
+      }
+    }
+  }
+  // cout<<cnt<<"\n";
+}
+int32_t main()
+{
+    fast
+    ll q=1;
+    cin>>q;
+    while(q--)solve();
+    return 0;
+}
